@@ -10,7 +10,7 @@
 # zaterdag = 6
 
 
-# deze data vallen altijd op de zelfde dag van de week
+# deze data vallen altijd allemaal op de zelfde dag van de week (ankers)
 # jan 31 of (leap)32
 # feb 28 of (leap)29
 # mar 7
@@ -31,9 +31,10 @@
 # 1800,2200,2600 = vrijdag = 5
 
 
-# 2000 = 2
-# 25/12 = 2 r 1
-# 1/4 = 0
+# 2000 = 2 = "a"
+# 25/12 = 2 r 1 = "b" r "c"
+# 1/4 = 0 = "c"/4 = "d"
+# sum(a,b,c,d):
 # 2+2+1+0= 5 == vrijdag == anker == 11 juli 2025
 
 # 11-9 = 2 dagen = vrijdag-2 = woensdag
@@ -96,14 +97,19 @@ def get_day_of_week(day, month, year):
 
 def main():
     print("Doomsday Algorithm Calculator")
-    print("Enter date (example: 9 7 1999 for July 9, 1999):")
-    try:
-        day, month, year = map(int, input().split())
-        result = get_day_of_week(day, month, year)
-        print(f"The day is: {result}")
-    except ValueError:
-        print("Please enter date in format: day month year (space separated)")
-        print("Example: 9 7 2025")
+    while True:
+        print("\nEnter date (example: 9 7 1999 for July 9, 1999), or type 'exit' to quit:")
+        user_input = input()
+        if user_input.lower() == 'exit':
+            print("Exiting the calculator. Goodbye!")
+            break
+        try:
+            day, month, year = map(int, user_input.split())
+            result = get_day_of_week(day, month, year)
+            print(f"The day is: {result}")
+        except ValueError:
+            print("Please enter date in format: day month year (space separated)")
+            print("Example: 9 7 2025")
 
 if __name__ == "__main__":
     main()
